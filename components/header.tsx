@@ -4,8 +4,8 @@ import { CtrlLogo } from "./logo"
 
 export function Header() {
   return (
-    <header className="py-4">
-      <div className="container mx-auto flex items-center justify-between px-8">
+    <header className="py-6">
+      <div className="container mx-auto flex items-center justify-between px-12">
         <Link 
           href="/" 
           className="transition-opacity hover:opacity-80" 
