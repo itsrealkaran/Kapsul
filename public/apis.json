@@ -1,0 +1,44 @@
+{
+    "apis": [
+      {
+        "id": "google-maps",
+        "slug": "google-maps-api",
+        "name": "Google Maps API",
+        "description": "Integrate Google Maps into your applications for location-based services.",
+        "processId": "GM001",
+        "params": {
+          "compulsory": ["api_key", "location"],
+          "optional": ["zoom", "maptype"]
+        },
+        "jsExample": "const map = new google.maps.Map(document.getElementById('map'), {\n  center: { lat: -34.397, lng: 150.644 },\n  zoom: 8\n});",
+        "luaExample": "local map = GoogleMaps.new({\n  center = { lat = -34.397, lng = 150.644 },\n  zoom = 8\n})"
+      },
+      {
+        "id": "github",
+        "slug": "github-api",
+        "name": "GitHub API",
+        "description": "Access GitHub resources and integrate GitHub functionality into your applications.",
+        "processId": "GH001",
+        "params": {
+          "compulsory": ["access_token"],
+          "optional": ["per_page", "page"]
+        },
+        "jsExample": "const octokit = new Octokit({ auth: 'YOUR-TOKEN' });\nconst { data } = await octokit.rest.repos.get({\n  owner: 'octokit',\n  repo: 'rest.js'\n});",
+        "luaExample": "local github = require('github')\nlocal client = github.new({ access_token = 'YOUR-TOKEN' })\nlocal repo = client:get_repo('octokit/rest.js')"
+      },
+      {
+        "id": "discord",
+        "slug": "discord-api",
+        "name": "Discord API",
+        "description": "Build bots, integrate Discord features, and manage Discord servers programmatically.",
+        "processId": "DC001",
+        "params": {
+          "compulsory": ["bot_token"],
+          "optional": ["channel_id", "message"]
+        },
+        "jsExample": "const client = new Discord.Client();\nclient.on('ready', () => {\n  console.log(`Logged in as ${client.user.tag}!`);\n});\nclient.login('YOUR-BOT-TOKEN');",
+        "luaExample": "local discordia = require('discordia')\nlocal client = discordia.Client()\nclient:on('ready', function()\n  print('Logged in as ' .. client.user.username)\nend)\nclient:run('YOUR-BOT-TOKEN')"
+      }
+    ]
+  }
+  

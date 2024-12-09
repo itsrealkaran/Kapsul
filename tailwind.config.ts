@@ -12,8 +12,12 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        rounded: ['Nunito', 'sans-serif'], // Add your custom font
+      },
     },
   },
   plugins: [],
 };
 export default config;
+
