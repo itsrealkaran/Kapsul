@@ -8,16 +8,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      backdropBlur: {
+        sm: '4px',
       },
-      fontFamily: {
-        rounded: ['Nunito', 'sans-serif'], // Add your custom font
-      },
-    },
+      borderRadius: {
+        '2xl': '1rem',
+      }
+    }
   },
   plugins: [],
 };
 export default config;
-

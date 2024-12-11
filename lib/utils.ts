@@ -5,19 +5,22 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function getRandomGradient(seed: string): string {
-  // Theme colors - you can adjust these
+export function getRandomColor(seed: string): { backgroundColor: string; color: string } {
+  // Pastel background colors with matching text colors
   const colors = [
-    ['from-blue-100', 'to-indigo-100'],
-    ['from-green-100', 'to-emerald-100'],
-    ['from-purple-100', 'to-pink-100'],
-    ['from-orange-100', 'to-amber-100'],
-    ['from-teal-100', 'to-cyan-100']
+    { backgroundColor: '#E3F2FD', color: '#1565C0' }, // blue
+    { backgroundColor: '#E8F5E9', color: '#2E7D32' }, // green
+    { backgroundColor: '#F3E5F5', color: '#7B1FA2' }, // purple
+    { backgroundColor: '#FFF3E0', color: '#E65100' }, // orange
+    { backgroundColor: '#FCE4EC', color: '#C2185B' }, // pink
+    { backgroundColor: '#E0F2F1', color: '#00695C' }, // teal
+    { backgroundColor: '#E8EAF6', color: '#283593' }, // indigo
+    { backgroundColor: '#FFEBEE', color: '#B71C1C' }, // red
+    { backgroundColor: '#E0F7FA', color: '#006064' }, // cyan
+    { backgroundColor: '#FFF8E1', color: '#FF6F00' }, // amber
   ]
   
-  // Use the seed string to pick a consistent color pair
   const index = seed.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % colors.length
-  
-  return `bg-gradient-to-br ${colors[index][0]} ${colors[index][1]}`
+  return colors[index]
 }
 
