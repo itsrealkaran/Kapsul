@@ -1,5 +1,6 @@
 'use client'
 
+import { BsBookmark } from 'react-icons/bs'
 import { CodeCell } from './ui/code-cell'
 
 
@@ -32,23 +33,9 @@ export function APIShowcase({ api }: APIShowcaseProps) {
             {api.description}
           </p>
         </div>
-
-        <div className="flex flex-col items-end gap-3">
-          <div className="bg-gray-100/50 rounded-lg p-1 flex gap-1 backdrop-blur-sm shadow-lg">
-            <button className="px-3 py-1 rounded text-sm transition-all hover:bg-white/50">
-              API Documentation
-            </button>
-            <button className="px-3 py-1 rounded text-sm transition-all hover:bg-white/50">
-              Example Use Cases
-            </button>
-            <button className="px-3 py-1 rounded text-sm transition-all hover:bg-white/50">
-              Rate this API
-            </button>
-          </div>
-        </div>
       </div>
 
-        {/* Benchmark Scores - Inspired by Market Benchmark Scores */}
+      {/* Benchmark Scores - Inspired by Market Benchmark Scores */}
         <div className="grid grid-cols-4 gap-4 mb-8">
           {[
             { label: 'UPTIME', value: '99.9%', score: 92 },
@@ -81,7 +68,7 @@ export function APIShowcase({ api }: APIShowcaseProps) {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Parameters Section */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-2">
             <div className="bg-gray-100/50 rounded-xl p-6 border border-gray-100 shadow-sm backdrop-blur-sm shadow-lg">
               <h2 className="text-xs uppercase tracking-wider text-gray-500 mb-4 font-mono">PARAMETER METRICS</h2>
               <div className="grid grid-cols-2 gap-4">
@@ -99,46 +86,50 @@ export function APIShowcase({ api }: APIShowcaseProps) {
                 </div>
               </div>
 
-              <div className="mt-6 space-y-3">
-                <h3 className="text-sm font-medium text-gray-700 mb-2">Required Parameters</h3>
-                {api.params.compulsory.map(param => (
-                  <div key={param} className="bg-gray-100/50 p-3 rounded-lg backdrop-blur-sm shadow-lg">
-                    <div className="flex items-center gap-2">
-                      <div 
-                        className="w-2 h-2 bg-red-400 rounded-full"
-                        style={{
-                          boxShadow: '0px 0px 10px rgba(255, 0, 0, 0.5)',
-                          filter: 'blur(2px)'
-                        }}
-                      />
-                      <div className="absolute w-2 h-2 bg-red-500 rounded-full"/>
-                      <span className="text-gray-900 font-mono text-sm">{param}</span>
+              <div className="mt-6 grid grid-cols-2 gap-4">
+                <div className="space-y-3">
+                  <h3 className="text-sm font-medium text-gray-700 mb-2">Required Parameters</h3>
+                  {api.params.compulsory.map(param => (
+                    <div key={param} className="bg-gray-100/50 p-3 rounded-lg backdrop-blur-sm shadow-lg">
+                      <div className="flex items-center gap-2">
+                        <div 
+                          className="w-2 h-2 bg-red-400 rounded-full"
+                          style={{
+                            boxShadow: '0px 0px 10px rgba(255, 0, 0, 0.5)',
+                            filter: 'blur(2px)'
+                          }}
+                        />
+                        <div className="absolute w-2 h-2 bg-red-500 rounded-full"/>
+                        <span className="text-gray-900 font-mono text-sm">{param}</span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
                 
-                <h3 className="text-sm font-medium text-gray-700 mb-2 mt-6">Optional Parameters</h3>
-                {api.params.optional.map(param => (
-                  <div key={param} className="bg-gray-100/50 p-3 rounded-lg backdrop-blur-sm shadow-lg">
-                    <div className="flex items-center gap-2">
-                    <div 
-                        className="w-2 h-2 bg-green-400 rounded-full"
-                        style={{
-                          boxShadow: '0px 0px 10px rgba(255, 0, 0, 0.5)',
-                          filter: 'blur(2px)'
-                        }}
-                      />
-                      <div className="absolute w-2 h-2 bg-green-500 rounded-full"/>
-                      <span className="text-gray-900 font-mono text-sm">{param}</span>
+                <div className="space-y-3">
+                  <h3 className="text-sm font-medium text-gray-700 mb-2">Optional Parameters</h3>
+                  {api.params.optional.map(param => (
+                    <div key={param} className="bg-gray-100/50 p-3 rounded-lg backdrop-blur-sm shadow-lg">
+                      <div className="flex items-center gap-2">
+                        <div 
+                          className="w-2 h-2 bg-green-400 rounded-full"
+                          style={{
+                            boxShadow: '0px 0px 10px rgba(255, 0, 0, 0.5)',
+                            filter: 'blur(2px)'
+                          }}
+                        />
+                        <div className="absolute w-2 h-2 bg-green-500 rounded-full"/>
+                        <span className="text-gray-900 font-mono text-sm">{param}</span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
         {/* Code Examples Section */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-1 space-y-6">
           {/* JavaScript Example */}
           <div className="bg-gray-100/50 rounded-xl p-6 border border-gray-100 shadow-sm backdrop-blur-sm shadow-lg">
             <div className="flex items-center justify-between mb-4">
