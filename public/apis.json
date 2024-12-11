@@ -5,7 +5,6 @@
         "slug": "google-maps-api",
         "name": "Google Maps API",
         "description": "Integrate Google Maps into your applications for location-based services.",
-        "processId": "GM001",
         "params": {
           "compulsory": ["api_key", "location"],
           "optional": ["zoom", "maptype"]
@@ -15,10 +14,9 @@
       },
       {
         "id": "github",
-        "slug": "github-api",
+        "slug": "github-api", 
         "name": "GitHub API",
         "description": "Access GitHub resources and integrate GitHub functionality into your applications.",
-        "processId": "GH001",
         "params": {
           "compulsory": ["access_token"],
           "optional": ["per_page", "page"]
@@ -29,15 +27,434 @@
       {
         "id": "discord",
         "slug": "discord-api",
-        "name": "Discord API",
+        "name": "Discord API", 
         "description": "Build bots, integrate Discord features, and manage Discord servers programmatically.",
-        "processId": "DC001",
         "params": {
           "compulsory": ["bot_token"],
           "optional": ["channel_id", "message"]
         },
         "jsExample": "const client = new Discord.Client();\nclient.on('ready', () => {\n  console.log(`Logged in as ${client.user.tag}!`);\n});\nclient.login('YOUR-BOT-TOKEN');",
         "luaExample": "local discordia = require('discordia')\nlocal client = discordia.Client()\nclient:on('ready', function()\n  print('Logged in as ' .. client.user.username)\nend)\nclient:run('YOUR-BOT-TOKEN')"
+      },
+      {
+        "id": "stripe",
+        "slug": "stripe-api",
+        "name": "Stripe API",
+        "description": "Process payments and manage financial transactions securely.",
+        "params": {
+          "compulsory": ["secret_key", "amount", "currency"],
+          "optional": ["description", "metadata"]
+        },
+        "jsExample": "const stripe = require('stripe')('YOUR-SECRET-KEY');\nconst payment = await stripe.paymentIntents.create({\n  amount: 2000,\n  currency: 'usd'\n});",
+        "luaExample": "local stripe = require('stripe')\nlocal payment = stripe.paymentIntents:create({\n  amount = 2000,\n  currency = 'usd'\n})"
+      },
+      {
+        "id": "twilio",
+        "slug": "twilio-api",
+        "name": "Twilio API",
+        "description": "Send SMS, make calls, and handle communications programmatically.",
+        "params": {
+          "compulsory": ["account_sid", "auth_token", "phone_number"],
+          "optional": ["message_body", "media_url"]
+        },
+        "jsExample": "const client = require('twilio')(accountSid, authToken);\nclient.messages.create({\n  body: 'Hello!',\n  to: '+1234567890',\n  from: '+0987654321'\n});",
+        "luaExample": "local twilio = require('twilio')\nlocal message = twilio.messages:create({\n  body = 'Hello!',\n  to = '+1234567890',\n  from = '+0987654321'\n})"
+      },
+      {
+        "id": "aws-s3",
+        "slug": "aws-s3-api",
+        "name": "AWS S3 API",
+        "description": "Store and retrieve data from Amazon S3 cloud storage.",
+        "params": {
+          "compulsory": ["access_key_id", "secret_access_key", "bucket"],
+          "optional": ["region", "acl"]
+        },
+        "jsExample": "const s3 = new AWS.S3();\nawait s3.putObject({\n  Bucket: 'my-bucket',\n  Key: 'file.txt',\n  Body: 'Hello World'\n}).promise();",
+        "luaExample": "local aws = require('aws-sdk')\nlocal s3 = aws.S3()\ns3:putObject({\n  Bucket = 'my-bucket',\n  Key = 'file.txt',\n  Body = 'Hello World'\n})"
+      },
+      {
+        "id": "sendgrid",
+        "slug": "sendgrid-api",
+        "name": "SendGrid API",
+        "description": "Send transactional and marketing emails reliably.",
+        "params": {
+          "compulsory": ["api_key", "to_email", "from_email"],
+          "optional": ["template_id", "dynamic_data"]
+        },
+        "jsExample": "const sgMail = require('@sendgrid/mail');\nsgMail.setApiKey(process.env.SENDGRID_API_KEY);\nawait sgMail.send({\n  to: 'test@example.com',\n  from: 'sender@example.com',\n  subject: 'Hello',\n  text: 'World'\n});",
+        "luaExample": "local sendgrid = require('sendgrid')\nlocal email = sendgrid.Email:new()\nemail:send({\n  to = 'test@example.com',\n  from = 'sender@example.com',\n  subject = 'Hello',\n  text = 'World'\n})"
+      },
+      {
+        "id": "mongodb",
+        "slug": "mongodb-api",
+        "name": "MongoDB API",
+        "description": "Interact with MongoDB databases using the official API.",
+        "params": {
+          "compulsory": ["connection_string", "database"],
+          "optional": ["collection", "options"]
+        },
+        "jsExample": "const client = await MongoClient.connect(uri);\nconst collection = client.db('test').collection('users');\nawait collection.insertOne({ name: 'John' });",
+        "luaExample": "local mongodb = require('mongodb')\nlocal client = mongodb.Client:connect(uri)\nlocal collection = client:collection('users')\ncollection:insert_one({ name = 'John' })"
+      },
+      {
+        "id": "spotify",
+        "slug": "spotify-api",
+        "name": "Spotify API",
+        "description": "Access music metadata and control playback through Spotify.",
+        "params": {
+          "compulsory": ["client_id", "client_secret"],
+          "optional": ["redirect_uri", "scope"]
+        },
+        "jsExample": "const spotify = new SpotifyWebApi();\nawait spotify.searchTracks('artist:Queen');\nawait spotify.play({ uri: 'spotify:track:123' });",
+        "luaExample": "local spotify = require('spotify-api')\nlocal tracks = spotify:search_tracks('artist:Queen')\nspotify:play({ uri = 'spotify:track:123' })"
+      },
+      {
+        "id": "slack",
+        "slug": "slack-api",
+        "name": "Slack API",
+        "description": "Build Slack apps and automate workspace activities.",
+        "params": {
+          "compulsory": ["bot_token", "channel"],
+          "optional": ["thread_ts", "attachments"]
+        },
+        "jsExample": "const { WebClient } = require('@slack/web-api');\nconst slack = new WebClient(token);\nawait slack.chat.postMessage({\n  channel: 'general',\n  text: 'Hello!'\n});",
+        "luaExample": "local slack = require('slack')\nlocal client = slack.Client(token)\nclient:post_message({\n  channel = 'general',\n  text = 'Hello!'\n})"
+      },
+      {
+        "id": "firebase",
+        "slug": "firebase-api",
+        "name": "Firebase API",
+        "description": "Build and manage serverless applications with Firebase.",
+        "params": {
+          "compulsory": ["api_key", "project_id"],
+          "optional": ["collection", "document"]
+        },
+        "jsExample": "const db = firebase.firestore();\nawait db.collection('users').add({\n  name: 'John',\n  age: 30\n});",
+        "luaExample": "local firebase = require('firebase')\nlocal db = firebase.firestore()\ndb:collection('users'):add({\n  name = 'John',\n  age = 30\n})"
+      },
+      {
+        "id": "twitter",
+        "slug": "twitter-api",
+        "name": "Twitter API",
+        "description": "Integrate Twitter features and post updates programmatically.",
+        "params": {
+          "compulsory": ["consumer_key", "consumer_secret", "access_token"],
+          "optional": ["tweet_mode", "include_entities"]
+        },
+        "jsExample": "const client = new TwitterApi(token);\nawait client.v2.tweet('Hello, Twitter!');",
+        "luaExample": "local twitter = require('twitter')\nlocal client = twitter.Client(token)\nclient:tweet('Hello, Twitter!')"
+      },
+      {
+        "id": "paypal",
+        "slug": "paypal-api",
+        "name": "PayPal API",
+        "description": "Process payments and manage transactions through PayPal.",
+        "params": {
+          "compulsory": ["client_id", "client_secret"],
+          "optional": ["currency", "intent"]
+        },
+        "jsExample": "const paypal = require('paypal-rest-sdk');\nawait paypal.payment.create({\n  intent: 'sale',\n  amount: { total: '30.00', currency: 'USD' }\n});",
+        "luaExample": "local paypal = require('paypal')\nlocal payment = paypal.Payment:create({\n  intent = 'sale',\n  amount = { total = '30.00', currency = 'USD' }\n})"
+      },
+      {
+        "id": "openai",
+        "slug": "openai-api",
+        "name": "OpenAI API",
+        "description": "Access AI models for natural language processing and generation.",
+        "params": {
+          "compulsory": ["api_key", "model"],
+          "optional": ["temperature", "max_tokens"]
+        },
+        "jsExample": "const openai = new OpenAI(apiKey);\nconst completion = await openai.complete({\n  prompt: 'Hello, AI!',\n  max_tokens: 50\n});",
+        "luaExample": "local openai = require('openai')\nlocal completion = openai:complete({\n  prompt = 'Hello, AI!',\n  max_tokens = 50\n})"
+      },
+      {
+        "id": "cloudinary",
+        "slug": "cloudinary-api",
+        "name": "Cloudinary API",
+        "description": "Manage and transform images and videos in the cloud.",
+        "params": {
+          "compulsory": ["cloud_name", "api_key", "api_secret"],
+          "optional": ["resource_type", "transformation"]
+        },
+        "jsExample": "const cloudinary = require('cloudinary').v2;\nawait cloudinary.uploader.upload('image.jpg', {\n  folder: 'samples'\n});",
+        "luaExample": "local cloudinary = require('cloudinary')\nlocal result = cloudinary.uploader:upload('image.jpg', {\n  folder = 'samples'\n})"
+      },
+      {
+        "id": "mailchimp",
+        "slug": "mailchimp-api",
+        "name": "Mailchimp API",
+        "description": "Manage email marketing campaigns and subscriber lists.",
+        "params": {
+          "compulsory": ["api_key", "list_id"],
+          "optional": ["subscriber_hash", "status"]
+        },
+        "jsExample": "const mailchimp = require('@mailchimp/mailchimp_marketing');\nawait mailchimp.lists.addListMember(listId, {\n  email_address: 'test@example.com',\n  status: 'subscribed'\n});",
+        "luaExample": "local mailchimp = require('mailchimp')\nlocal member = mailchimp.lists:add_member(list_id, {\n  email_address = 'test@example.com',\n  status = 'subscribed'\n})"
+      },
+      {
+        "id": "hubspot",
+        "slug": "hubspot-api",
+        "name": "HubSpot API",
+        "description": "Manage contacts, deals, and marketing automation in HubSpot.",
+        "params": {
+          "compulsory": ["api_key"],
+          "optional": ["properties", "associations"]
+        },
+        "jsExample": "const hubspot = new Client({ apiKey: 'demo' });\nawait hubspot.contacts.create({\n  properties: {\n    email: 'test@example.com'\n  }\n});",
+        "luaExample": "local hubspot = require('hubspot')\nlocal contact = hubspot.contacts:create({\n  properties = {\n    email = 'test@example.com'\n  }\n})"
+      },
+      {
+        "id": "zoom",
+        "slug": "zoom-api",
+        "name": "Zoom API",
+        "description": "Create and manage video meetings programmatically.",
+        "params": {
+          "compulsory": ["api_key", "api_secret"],
+          "optional": ["meeting_type", "duration"]
+        },
+        "jsExample": "const zoom = new ZoomAPI(credentials);\nawait zoom.meetings.create({\n  topic: 'Test Meeting',\n  duration: 60\n});",
+        "luaExample": "local zoom = require('zoom-api')\nlocal meeting = zoom.meetings:create({\n  topic = 'Test Meeting',\n  duration = 60\n})"
+      },
+      {
+        "id": "dropbox",
+        "slug": "dropbox-api",
+        "name": "Dropbox API",
+        "description": "Manage files and folders in Dropbox cloud storage.",
+        "params": {
+          "compulsory": ["access_token"],
+          "optional": ["path", "mode"]
+        },
+        "jsExample": "const dropbox = new Dropbox({ accessToken: 'TOKEN' });\nawait dropbox.filesUpload({\n  path: '/test.txt',\n  contents: 'Hello, Dropbox!'\n});",
+        "luaExample": "local dropbox = require('dropbox')\nlocal result = dropbox:upload_file({\n  path = '/test.txt',\n  contents = 'Hello, Dropbox!'\n})"
+      },
+      {
+        "id": "linkedin",
+        "slug": "linkedin-api",
+        "name": "LinkedIn API",
+        "description": "Access professional network data and post updates.",
+        "params": {
+          "compulsory": ["client_id", "client_secret"],
+          "optional": ["scope", "state"]
+        },
+        "jsExample": "const linkedin = new LinkedIn(auth);\nawait linkedin.posts.create({\n  content: 'Hello, LinkedIn!',\n  visibility: 'PUBLIC'\n});",
+        "luaExample": "local linkedin = require('linkedin')\nlocal post = linkedin.posts:create({\n  content = 'Hello, LinkedIn!',\n  visibility = 'PUBLIC'\n})"
+      },
+      {
+        "id": "salesforce",
+        "slug": "salesforce-api",
+        "name": "Salesforce API",
+        "description": "Manage customer relationships and sales data in Salesforce.",
+        "params": {
+          "compulsory": ["username", "password", "security_token"],
+          "optional": ["version", "instance_url"]
+        },
+        "jsExample": "const conn = new jsforce.Connection();\nawait conn.login(username, password);\nawait conn.sobject('Account').create({ Name: 'Test Account' });",
+        "luaExample": "local salesforce = require('salesforce')\nlocal account = salesforce:create_account({\n  Name = 'Test Account'\n})"
+      },
+      {
+        "id": "instagram",
+        "slug": "instagram-api",
+        "name": "Instagram API",
+        "description": "Access Instagram features and post updates programmatically.",
+        "params": {
+          "compulsory": ["access_token", "user_id"],
+          "optional": ["media_type", "caption"]
+        },
+        "jsExample": "const instagram = new Instagram(token);\nawait instagram.media.create({\n  image_url: 'https://example.com/image.jpg',\n  caption: 'Hello, Instagram!'\n});",
+        "luaExample": "local instagram = require('instagram')\nlocal media = instagram:create_post({\n  image_url = 'https://example.com/image.jpg',\n  caption = 'Hello, Instagram!'\n})"
+      },
+      {
+        "id": "digitalocean",
+        "slug": "digitalocean-api",
+        "name": "DigitalOcean API",
+        "description": "Manage cloud infrastructure and services programmatically.",
+        "params": {
+          "compulsory": ["api_token"],
+          "optional": ["region", "size"]
+        },
+        "jsExample": "const digitalocean = new DigitalOcean(token);\nawait digitalocean.droplets.create({\n  name: 'test-droplet',\n  region: 'nyc3',\n  size: 's-1vcpu-1gb'\n});",
+        "luaExample": "local do_api = require('digitalocean')\nlocal droplet = do_api:create_droplet({\n  name = 'test-droplet',\n  region = 'nyc3',\n  size = 's-1vcpu-1gb'\n})"
+      },
+      {
+        "id": "mailgun",
+        "slug": "mailgun-api",
+        "name": "Mailgun API",
+        "description": "Send transactional emails through Mailgun's service.",
+        "params": {
+          "compulsory": ["api_key", "domain"],
+          "optional": ["template", "variables"]
+        },
+        "jsExample": "const mailgun = new Mailgun({ apiKey: 'key', domain: 'example.com' });\nawait mailgun.messages.create('domain', {\n  from: 'sender@example.com',\n  to: 'recipient@example.com',\n  subject: 'Hello',\n  text: 'Testing Mailgun'\n});",
+        "luaExample": "local mailgun = require('mailgun')\nlocal message = mailgun:send_email({\n  from = 'sender@example.com',\n  to = 'recipient@example.com',\n  subject = 'Hello',\n  text = 'Testing Mailgun'\n})"
+      },
+      {
+        "id": "redis",
+        "slug": "redis-api",
+        "name": "Redis API",
+        "description": "Interact with Redis databases for caching and data storage.",
+        "params": {
+          "compulsory": ["host", "port"],
+          "optional": ["password", "db"]
+        },
+        "jsExample": "const redis = new Redis();\nawait redis.set('key', 'value');\nconst value = await redis.get('key');",
+        "luaExample": "local redis = require('redis')\nlocal client = redis.connect()\nclient:set('key', 'value')\nlocal value = client:get('key')"
+      },
+      {
+        "id": "elasticsearch",
+        "slug": "elasticsearch-api",
+        "name": "Elasticsearch API",
+        "description": "Search and analyze data in real-time.",
+        "params": {
+          "compulsory": ["node", "index"],
+          "optional": ["type", "body"]
+        },
+        "jsExample": "const client = new Client({ node: 'http://localhost:9200' });\nawait client.index({\n  index: 'test',\n  body: { title: 'Test' }\n});",
+        "luaExample": "local elasticsearch = require('elasticsearch')\nlocal client = elasticsearch.Client()\nclient:index({\n  index = 'test',\n  body = { title = 'Test' }\n})"
+      },
+      {
+        "id": "twitch",
+        "slug": "twitch-api",
+        "name": "Twitch API",
+        "description": "Integrate Twitch streaming features into applications.",
+        "params": {
+          "compulsory": ["client_id", "client_secret"],
+          "optional": ["scope", "redirect_uri"]
+        },
+        "jsExample": "const twitch = new TwitchClient({ clientId: 'id' });\nconst stream = await twitch.streams.getStreamByUserId('123');",
+        "luaExample": "local twitch = require('twitch')\nlocal client = twitch.Client({ client_id = 'id' })\nlocal stream = client:get_stream('123')"
+      },
+      {
+        "id": "shopify",
+        "slug": "shopify-api",
+        "name": "Shopify API",
+        "description": "Manage e-commerce stores and products on Shopify.",
+        "params": {
+          "compulsory": ["shop_name", "access_token"],
+          "optional": ["version", "scope"]
+        },
+        "jsExample": "const shopify = new Shopify({ shopName: 'store', accessToken: 'token' });\nawait shopify.product.create({\n  title: 'New Product',\n  price: '19.99'\n});",
+        "luaExample": "local shopify = require('shopify')\nlocal product = shopify:create_product({\n  title = 'New Product',\n  price = '19.99'\n})"
+      },
+      {
+        "id": "zendesk",
+        "slug": "zendesk-api",
+        "name": "Zendesk API",
+        "description": "Manage customer support tickets and user data.",
+        "params": {
+          "compulsory": ["email", "token", "subdomain"],
+          "optional": ["locale", "priority"]
+        },
+        "jsExample": "const client = new ZendeskAPI({ email: 'admin@example.com', token: 'token' });\nawait client.tickets.create({\n  subject: 'New Ticket',\n  comment: { body: 'Help needed' }\n});",
+        "luaExample": "local zendesk = require('zendesk')\nlocal ticket = zendesk:create_ticket({\n  subject = 'New Ticket',\n  comment = { body = 'Help needed' }\n})"
+      },
+      {
+        "id": "asana",
+        "slug": "asana-api",
+        "name": "Asana API",
+        "description": "Manage projects and tasks in Asana workspaces.",
+        "params": {
+          "compulsory": ["access_token"],
+          "optional": ["workspace", "project"]
+        },
+        "jsExample": "const client = asana.Client.create().useAccessToken('token');\nawait client.tasks.create({\n  name: 'New Task',\n  notes: 'Task details'\n});",
+        "luaExample": "local asana = require('asana')\nlocal task = asana:create_task({\n  name = 'New Task',\n  notes = 'Task details'\n})"
+      },
+      {
+        "id": "box",
+        "slug": "box-api",
+        "name": "Box API",
+        "description": "Manage files and folders in Box cloud storage.",
+        "params": {
+          "compulsory": ["client_id", "client_secret"],
+          "optional": ["folder_id", "file_name"]
+        },
+        "jsExample": "const box = new Box({ clientId: 'id', clientSecret: 'secret' });\nawait box.files.upload({\n  name: 'test.txt',\n  parent: { id: '0' }\n});",
+        "luaExample": "local box = require('box')\nlocal file = box:upload_file({\n  name = 'test.txt',\n  parent_id = '0'\n})"
+      },
+      {
+        "id": "jira",
+        "slug": "jira-api",
+        "name": "Jira API",
+        "description": "Manage projects and issues in Jira.",
+        "params": {
+          "compulsory": ["host", "email", "api_token"],
+          "optional": ["project", "issuetype"]
+        },
+        "jsExample": "const jira = new JiraApi({ host: 'example.atlassian.net' });\nawait jira.issues.createIssue({\n  fields: {\n    project: { key: 'PROJ' },\n    summary: 'New Issue'\n  }\n});",
+        "luaExample": "local jira = require('jira')\nlocal issue = jira:create_issue({\n  project = 'PROJ',\n  summary = 'New Issue'\n})"
+      },
+      {
+        "id": "trello",
+        "slug": "trello-api",
+        "name": "Trello API",
+        "description": "Manage boards, lists, and cards in Trello.",
+        "params": {
+          "compulsory": ["api_key", "token"],
+          "optional": ["board_id", "list_id"]
+        },
+        "jsExample": "const trello = new Trello(key, token);\nawait trello.addCard({\n  name: 'New Card',\n  desc: 'Card description',\n  idList: 'list123'\n});",
+        "luaExample": "local trello = require('trello')\nlocal card = trello:create_card({\n  name = 'New Card',\n  description = 'Card description',\n  list_id = 'list123'\n})"
+      },
+      {
+        "id": "intercom",
+        "slug": "intercom-api",
+        "name": "Intercom API",
+        "description": "Manage customer messaging and support.",
+        "params": {
+          "compulsory": ["access_token"],
+          "optional": ["scope", "user_id"]
+        },
+        "jsExample": "const intercom = new Intercom({ token: 'token' });\nawait intercom.contacts.create({\n  email: 'user@example.com',\n  name: 'John Doe'\n});",
+        "luaExample": "local intercom = require('intercom')\nlocal contact = intercom:create_contact({\n  email = 'user@example.com',\n  name = 'John Doe'\n})"
+      },
+      {
+        "id": "freshdesk",
+        "slug": "freshdesk-api",
+        "name": "Freshdesk API",
+        "description": "Manage customer support tickets and contacts.",
+        "params": {
+          "compulsory": ["domain", "api_key"],
+          "optional": ["ticket_type", "status"]
+        },
+        "jsExample": "const freshdesk = new Freshdesk(domain, key);\nawait freshdesk.createTicket({\n  subject: 'Support Needed',\n  description: 'Please help'\n});",
+        "luaExample": "local freshdesk = require('freshdesk')\nlocal ticket = freshdesk:create_ticket({\n  subject = 'Support Needed',\n  description = 'Please help'\n})"
+      },
+      {
+        "id": "airtable",
+        "slug": "airtable-api",
+        "name": "Airtable API",
+        "description": "Manage databases and tables in Airtable.",
+        "params": {
+          "compulsory": ["api_key", "base_id"],
+          "optional": ["table_name", "view"]
+        },
+        "jsExample": "const airtable = new Airtable({ apiKey: 'key' });\nawait airtable.base('base123').table('Table').create({\n  'Field 1': 'Value 1',\n  'Field 2': 'Value 2'\n});",
+        "luaExample": "local airtable = require('airtable')\nlocal record = airtable:create_record({\n  base = 'base123',\n  table = 'Table',\n  fields = {\n    Field1 = 'Value 1',\n    Field2 = 'Value 2'\n  }\n})"
+      },
+      {
+        "id": "segment",
+        "slug": "segment-api",
+        "name": "Segment API",
+        "description": "Track customer data and events across platforms.",
+        "params": {
+          "compulsory": ["write_key"],
+          "optional": ["user_id", "event"]
+        },
+        "jsExample": "const analytics = new Analytics('write_key');\nawait analytics.track({\n  userId: '123',\n  event: 'Item Purchased',\n  properties: { item: 'Book' }\n});",
+        "luaExample": "local segment = require('segment')\nlocal event = segment:track({\n  user_id = '123',\n  event = 'Item Purchased',\n  properties = { item = 'Book' }\n})"
+      },
+      {
+        "id": "algolia",
+        "slug": "algolia-api",
+        "name": "Algolia API",
+        "description": "Implement powerful search functionality in applications.",
+        "params": {
+          "compulsory": ["app_id", "api_key", "index"],
+          "optional": ["query", "filters"]
+        },
+        "jsExample": "const client = algoliasearch('app_id', 'api_key');\nconst index = client.initIndex('products');\nawait index.search('query');",
+        "luaExample": "local algolia = require('algolia')\nlocal results = algolia:search({\n  index = 'products',\n  query = 'search term'\n})"
       }
     ]
   }

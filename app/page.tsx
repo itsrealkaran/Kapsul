@@ -1,7 +1,7 @@
 'use client'
 import { Layout } from "@/components/layout"
 import { Search } from "@/components/search"
-import { SpaceStocksBadge } from "@/components/space-stocks-badge"
+import { SpaceStocksBadge } from "@/components/ui/space-stocks-badge"
 import { useState } from "react"
 
 export default function Page() {

@@ -8,7 +8,6 @@ interface API {
   slug: string
   name: string
   description: string
-  processId: string
   params: {
     compulsory: string[]
     optional: string[]
@@ -30,7 +29,7 @@ export function APIShowcase({ api }: APIShowcaseProps) {
         <h1 className="text-3xl font-bold mb-4">{api.name}</h1>
         <p className="text-gray-600 mb-4">{api.description}</p>
         <div className="mb-4">
-          <span className="font-semibold">Process ID:</span> {api.processId}
+          <span className="font-semibold">Process ID:</span> API001
         </div>
         <div className="mb-6">
           <h2 className="text-xl font-semibold mb-2">Parameters</h2>
@@ -55,24 +54,7 @@ export function APIShowcase({ api }: APIShowcaseProps) {
         </div>
       </div>
       <div className="w-1/2 p-6">
-        <div className="flex mb-4">
-          <button
-            className={`px-4 py-2 rounded-tl-lg rounded-tr-lg ${
-              activeTab === 'js' ? 'bg-gray-200 font-semibold' : 'bg-gray-100'
-            }`}
-            onClick={() => setActiveTab('js')}
-          >
-            JavaScript/TypeScript
-          </button>
-          <button
-            className={`px-4 py-2 rounded-tl-lg rounded-tr-lg ${
-              activeTab === 'lua' ? 'bg-gray-200 font-semibold' : 'bg-gray-100'
-            }`}
-            onClick={() => setActiveTab('lua')}
-          >
-            Lua
-          </button>
-        </div>
+        <CodeCell language={activeTab} code={activeTab === 'js' ? api.jsExample : api.luaExample} />
         <CodeCell language={activeTab} code={activeTab === 'js' ? api.jsExample : api.luaExample} />
       </div>
     </div>

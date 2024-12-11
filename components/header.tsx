@@ -50,7 +50,7 @@ export function Header() {
         
         <Button 
           variant="default" 
-          className="bg-black text-white hover:bg-black/90 rounded-full px-4 transition-transform hover:scale-105"
+          className="bg-black text-white hover:bg-black/90 rounded-xl px-4 transition-transform hover:scale-105"
         >
           Connect Wallet
         </Button>
