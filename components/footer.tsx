@@ -13,16 +13,16 @@ export function Footer() {
             </Link>
           </div>
           <div className="flex items-center space-x-6 mt-4 md:mt-0">
-            <Link href="#" className="text-gray-600 hover:text-black">
+            <Link href="mailto:itsrealkaran@outlook.com" className="text-gray-600 hover:text-black">
               <Mail className="h-5 w-5" />
             </Link>
-            <Link href="#" className="text-gray-600 hover:text-black">
+            <Link href="https://twitter.com/itsrealkaran" className="text-gray-600 hover:text-black">
               <Twitter className="h-5 w-5" />
             </Link>
-            <Link href="#" className="text-gray-600 hover:text-black">
+            <Link href="https://instagram.com/itsrealkaran" className="text-gray-600 hover:text-black">
               <Instagram className="h-5 w-5" />
             </Link>
-            <Link href="#" className="text-gray-600 hover:text-black">
+            <Link href="https://facebook.com/itsrealkaran" className="text-gray-600 hover:text-black">
               <Facebook className="h-5 w-5" />
             </Link>
           </div>
@@ -31,4 +31,3 @@ export function Footer() {
     </footer>
   )
 }
-

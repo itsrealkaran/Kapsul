@@ -1,6 +1,5 @@
 'use client'
 
-import { BsBookmark } from 'react-icons/bs'
 import { CodeCell } from './ui/code-cell'
 
 
@@ -66,9 +65,9 @@ export function APIShowcase({ api }: APIShowcaseProps) {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Parameters Section */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1">
             <div className="bg-gray-100/50 rounded-xl p-6 border border-gray-100 shadow-sm backdrop-blur-sm shadow-lg">
               <h2 className="text-xs uppercase tracking-wider text-gray-500 mb-4 font-mono">PARAMETER METRICS</h2>
               <div className="grid grid-cols-2 gap-4">

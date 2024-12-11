@@ -90,7 +90,7 @@ export function Search() {
                 {query.length > 0 ? (
                   <div className="text-center text-gray-500 py-8">
                     <SearchIcon className="h-12 w-12 mx-auto mb-3 text-gray-400" />
-                    <p className="font-medium">No results found for '{query}'</p>
+                    <p className="font-medium">No results found for &quot;{query}&quot;</p>
                     <p className="text-sm mt-1">Try searching with a different term</p>
                   </div>
                 ) : (

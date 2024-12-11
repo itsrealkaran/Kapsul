@@ -18,31 +18,31 @@ export function Header() {
           <div className="bg-[#f9f9f9] backdrop-blur-sm rounded-lg px-4 py-2">
             <div className="flex items-center space-x-4">
               <Link 
-                href="/ctrl" 
+                href="/apis" 
                 className="text-sm font-medium text-gray-900 transition-colors hover:text-gray-600 hover:bg-[#ECEFEC] rounded-md px-4 py-2"
               >
-                $CTRL
+                APIs
               </Link>
               <span className="text-gray-300">|</span>
               <Link 
-                href="/support" 
+                href="/docs" 
                 className="text-sm font-medium text-gray-900 transition-colors hover:text-gray-600 hover:bg-[#ECEFEC] rounded-md px-4 py-2"
               >
-                Support
+                Documentation
               </Link>
               <span className="text-gray-300">|</span>
               <Link 
-                href="/security" 
+                href="/examples" 
                 className="text-sm font-medium text-gray-900 transition-colors hover:text-gray-600 hover:bg-[#ECEFEC] rounded-md px-4 py-2"
               >
-                Security
+                Examples
               </Link>
               <span className="text-gray-300">|</span>
               <Link 
-                href="/resources" 
+                href="/pricing" 
                 className="text-sm font-medium text-gray-900 transition-colors hover:text-gray-600 hover:bg-[#ECEFEC] rounded-md px-4 py-2"
               >
-                Resources
+                Pricing
               </Link>
             </div>
           </div>

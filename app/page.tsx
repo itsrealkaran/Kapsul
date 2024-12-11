@@ -5,7 +5,6 @@ import { SpaceStocksBadge } from "@/components/ui/space-stocks-badge"
 import { useState } from "react"
 
 export default function Page() {
-  const [searchCount] = useState<number>(118355)
   return (
     <Layout>
       <div className="container mx-auto px-4 py-20 text-center">
@@ -21,7 +20,7 @@ export default function Page() {
         <div className="mb-16">
           <Search />
           <div className="text-center text-sm mt-2 text-gray-600">
-          <span className="font-medium">{searchCount.toLocaleString()}</span> searches and counting
+            192 searches and counting
           </div>
         </div>
       </div>

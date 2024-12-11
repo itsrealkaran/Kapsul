@@ -9,44 +9,44 @@
           "compulsory": ["api_key", "location"],
           "optional": ["zoom", "maptype"]
         },
-        "jsExample": "const map = new google.maps.Map(document.getElementById('map'), {\n  center: { lat: -34.397, lng: 150.644 },\n  zoom: 8\n});",
-        "luaExample": "local map = GoogleMaps.new({\n  center = { lat = -34.397, lng = 150.644 },\n  zoom = 8\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ api_key: \"YOUR_API_KEY\", location: \"40.7128,-74.0060\"})},\n    ],\n    data: \"google-maps-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[google-maps-api]],\n  [\"Params\"] = [[{\"api_key\":\"YOUR_API_KEY\",\"location\":\"40.7128,-74.0060\"}]]\n})"
       },
       {
         "id": "github",
-        "slug": "github-api", 
-        "name": "GitHub API",
+        "slug": "github-api",
+        "name": "GitHub API", 
         "description": "Access GitHub resources and integrate GitHub functionality into your applications.",
         "params": {
           "compulsory": ["access_token"],
           "optional": ["per_page", "page"]
         },
-        "jsExample": "const octokit = new Octokit({ auth: 'YOUR-TOKEN' });\nconst { data } = await octokit.rest.repos.get({\n  owner: 'octokit',\n  repo: 'rest.js'\n});",
-        "luaExample": "local github = require('github')\nlocal client = github.new({ access_token = 'YOUR-TOKEN' })\nlocal repo = client:get_repo('octokit/rest.js')"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ access_token: \"YOUR_ACCESS_TOKEN\"})},\n    ],\n    data: \"github-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[github-api]],\n  [\"Params\"] = [[{\"access_token\":\"YOUR_ACCESS_TOKEN\"}]]\n})"
       },
       {
         "id": "discord",
         "slug": "discord-api",
-        "name": "Discord API", 
+        "name": "Discord API",
         "description": "Build bots, integrate Discord features, and manage Discord servers programmatically.",
         "params": {
           "compulsory": ["bot_token"],
           "optional": ["channel_id", "message"]
         },
-        "jsExample": "const client = new Discord.Client();\nclient.on('ready', () => {\n  console.log(`Logged in as ${client.user.tag}!`);\n});\nclient.login('YOUR-BOT-TOKEN');",
-        "luaExample": "local discordia = require('discordia')\nlocal client = discordia.Client()\nclient:on('ready', function()\n  print('Logged in as ' .. client.user.username)\nend)\nclient:run('YOUR-BOT-TOKEN')"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ bot_token: \"YOUR_BOT_TOKEN\"})},\n    ],\n    data: \"discord-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[discord-api]],\n  [\"Params\"] = [[{\"bot_token\":\"YOUR_BOT_TOKEN\"}]]\n})"
       },
       {
         "id": "stripe",
-        "slug": "stripe-api",
+        "slug": "stripe-api", 
         "name": "Stripe API",
         "description": "Process payments and manage financial transactions securely.",
         "params": {
           "compulsory": ["secret_key", "amount", "currency"],
           "optional": ["description", "metadata"]
         },
-        "jsExample": "const stripe = require('stripe')('YOUR-SECRET-KEY');\nconst payment = await stripe.paymentIntents.create({\n  amount: 2000,\n  currency: 'usd'\n});",
-        "luaExample": "local stripe = require('stripe')\nlocal payment = stripe.paymentIntents:create({\n  amount = 2000,\n  currency = 'usd'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ secret_key: \"YOUR_SECRET_KEY\", amount: 1000, currency: \"usd\"})},\n    ],\n    data: \"stripe-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[stripe-api]],\n  [\"Params\"] = [[{\"secret_key\":\"YOUR_SECRET_KEY\",\"amount\":1000,\"currency\":\"usd\"}]]\n})"
       },
       {
         "id": "twilio",
@@ -57,8 +57,8 @@
           "compulsory": ["account_sid", "auth_token", "phone_number"],
           "optional": ["message_body", "media_url"]
         },
-        "jsExample": "const client = require('twilio')(accountSid, authToken);\nclient.messages.create({\n  body: 'Hello!',\n  to: '+1234567890',\n  from: '+0987654321'\n});",
-        "luaExample": "local twilio = require('twilio')\nlocal message = twilio.messages:create({\n  body = 'Hello!',\n  to = '+1234567890',\n  from = '+0987654321'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ account_sid: \"YOUR_ACCOUNT_SID\", auth_token: \"YOUR_AUTH_TOKEN\", phone_number: \"+1234567890\"})},\n    ],\n    data: \"twilio-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[twilio-api]],\n  [\"Params\"] = [[{\"account_sid\":\"YOUR_ACCOUNT_SID\",\"auth_token\":\"YOUR_AUTH_TOKEN\",\"phone_number\":\"+1234567890\"}]]\n})"
       },
       {
         "id": "aws-s3",
@@ -69,8 +69,8 @@
           "compulsory": ["access_key_id", "secret_access_key", "bucket"],
           "optional": ["region", "acl"]
         },
-        "jsExample": "const s3 = new AWS.S3();\nawait s3.putObject({\n  Bucket: 'my-bucket',\n  Key: 'file.txt',\n  Body: 'Hello World'\n}).promise();",
-        "luaExample": "local aws = require('aws-sdk')\nlocal s3 = aws.S3()\ns3:putObject({\n  Bucket = 'my-bucket',\n  Key = 'file.txt',\n  Body = 'Hello World'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ access_key_id: \"YOUR_ACCESS_KEY_ID\", secret_access_key: \"YOUR_SECRET_ACCESS_KEY\", bucket: \"your-bucket-name\"})},\n    ],\n    data: \"aws-s3-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[aws-s3-api]],\n  [\"Params\"] = [[{\"access_key_id\":\"YOUR_ACCESS_KEY_ID\",\"secret_access_key\":\"YOUR_SECRET_ACCESS_KEY\",\"bucket\":\"your-bucket-name\"}]]\n})"
       },
       {
         "id": "sendgrid",
@@ -81,8 +81,8 @@
           "compulsory": ["api_key", "to_email", "from_email"],
           "optional": ["template_id", "dynamic_data"]
         },
-        "jsExample": "const sgMail = require('@sendgrid/mail');\nsgMail.setApiKey(process.env.SENDGRID_API_KEY);\nawait sgMail.send({\n  to: 'test@example.com',\n  from: 'sender@example.com',\n  subject: 'Hello',\n  text: 'World'\n});",
-        "luaExample": "local sendgrid = require('sendgrid')\nlocal email = sendgrid.Email:new()\nemail:send({\n  to = 'test@example.com',\n  from = 'sender@example.com',\n  subject = 'Hello',\n  text = 'World'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ api_key: \"YOUR_API_KEY\", to_email: \"recipient@example.com\", from_email: \"sender@example.com\"})},\n    ],\n    data: \"sendgrid-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[sendgrid-api]],\n  [\"Params\"] = [[{\"api_key\":\"YOUR_API_KEY\",\"to_email\":\"recipient@example.com\",\"from_email\":\"sender@example.com\"}]]\n})"
       },
       {
         "id": "mongodb",
@@ -93,8 +93,8 @@
           "compulsory": ["connection_string", "database"],
           "optional": ["collection", "options"]
         },
-        "jsExample": "const client = await MongoClient.connect(uri);\nconst collection = client.db('test').collection('users');\nawait collection.insertOne({ name: 'John' });",
-        "luaExample": "local mongodb = require('mongodb')\nlocal client = mongodb.Client:connect(uri)\nlocal collection = client:collection('users')\ncollection:insert_one({ name = 'John' })"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ connection_string: \"YOUR_CONNECTION_STRING\", database: \"your-database\"})},\n    ],\n    data: \"mongodb-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[mongodb-api]],\n  [\"Params\"] = [[{\"connection_string\":\"YOUR_CONNECTION_STRING\",\"database\":\"your-database\"}]]\n})"
       },
       {
         "id": "spotify",
@@ -105,8 +105,8 @@
           "compulsory": ["client_id", "client_secret"],
           "optional": ["redirect_uri", "scope"]
         },
-        "jsExample": "const spotify = new SpotifyWebApi();\nawait spotify.searchTracks('artist:Queen');\nawait spotify.play({ uri: 'spotify:track:123' });",
-        "luaExample": "local spotify = require('spotify-api')\nlocal tracks = spotify:search_tracks('artist:Queen')\nspotify:play({ uri = 'spotify:track:123' })"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ client_id: \"YOUR_CLIENT_ID\", client_secret: \"YOUR_CLIENT_SECRET\"})},\n    ],\n    data: \"spotify-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[spotify-api]],\n  [\"Params\"] = [[{\"client_id\":\"YOUR_CLIENT_ID\",\"client_secret\":\"YOUR_CLIENT_SECRET\"}]]\n})"
       },
       {
         "id": "slack",
@@ -117,8 +117,8 @@
           "compulsory": ["bot_token", "channel"],
           "optional": ["thread_ts", "attachments"]
         },
-        "jsExample": "const { WebClient } = require('@slack/web-api');\nconst slack = new WebClient(token);\nawait slack.chat.postMessage({\n  channel: 'general',\n  text: 'Hello!'\n});",
-        "luaExample": "local slack = require('slack')\nlocal client = slack.Client(token)\nclient:post_message({\n  channel = 'general',\n  text = 'Hello!'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ bot_token: \"YOUR_BOT_TOKEN\", channel: \"your-channel\"})},\n    ],\n    data: \"slack-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[slack-api]],\n  [\"Params\"] = [[{\"bot_token\":\"YOUR_BOT_TOKEN\",\"channel\":\"your-channel\"}]]\n})"
       },
       {
         "id": "firebase",
@@ -129,8 +129,8 @@
           "compulsory": ["api_key", "project_id"],
           "optional": ["collection", "document"]
         },
-        "jsExample": "const db = firebase.firestore();\nawait db.collection('users').add({\n  name: 'John',\n  age: 30\n});",
-        "luaExample": "local firebase = require('firebase')\nlocal db = firebase.firestore()\ndb:collection('users'):add({\n  name = 'John',\n  age = 30\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ api_key: \"YOUR_API_KEY\", project_id: \"your-project-id\"})},\n    ],\n    data: \"firebase-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[firebase-api]],\n  [\"Params\"] = [[{\"api_key\":\"YOUR_API_KEY\",\"project_id\":\"your-project-id\"}]]\n})"
       },
       {
         "id": "twitter",
@@ -141,8 +141,8 @@
           "compulsory": ["consumer_key", "consumer_secret", "access_token"],
           "optional": ["tweet_mode", "include_entities"]
         },
-        "jsExample": "const client = new TwitterApi(token);\nawait client.v2.tweet('Hello, Twitter!');",
-        "luaExample": "local twitter = require('twitter')\nlocal client = twitter.Client(token)\nclient:tweet('Hello, Twitter!')"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ consumer_key: \"YOUR_CONSUMER_KEY\", consumer_secret: \"YOUR_CONSUMER_SECRET\", access_token: \"YOUR_ACCESS_TOKEN\"})},\n    ],\n    data: \"twitter-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[twitter-api]],\n  [\"Params\"] = [[{\"consumer_key\":\"YOUR_CONSUMER_KEY\",\"consumer_secret\":\"YOUR_CONSUMER_SECRET\",\"access_token\":\"YOUR_ACCESS_TOKEN\"}]]\n})"
       },
       {
         "id": "paypal",
@@ -153,8 +153,8 @@
           "compulsory": ["client_id", "client_secret"],
           "optional": ["currency", "intent"]
         },
-        "jsExample": "const paypal = require('paypal-rest-sdk');\nawait paypal.payment.create({\n  intent: 'sale',\n  amount: { total: '30.00', currency: 'USD' }\n});",
-        "luaExample": "local paypal = require('paypal')\nlocal payment = paypal.Payment:create({\n  intent = 'sale',\n  amount = { total = '30.00', currency = 'USD' }\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ client_id: \"YOUR_CLIENT_ID\", client_secret: \"YOUR_CLIENT_SECRET\"})},\n    ],\n    data: \"paypal-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[paypal-api]],\n  [\"Params\"] = [[{\"client_id\":\"YOUR_CLIENT_ID\",\"client_secret\":\"YOUR_CLIENT_SECRET\"}]]\n})"
       },
       {
         "id": "openai",
@@ -165,8 +165,8 @@
           "compulsory": ["api_key", "model"],
           "optional": ["temperature", "max_tokens"]
         },
-        "jsExample": "const openai = new OpenAI(apiKey);\nconst completion = await openai.complete({\n  prompt: 'Hello, AI!',\n  max_tokens: 50\n});",
-        "luaExample": "local openai = require('openai')\nlocal completion = openai:complete({\n  prompt = 'Hello, AI!',\n  max_tokens = 50\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ api_key: \"YOUR_API_KEY\", model: \"gpt-3.5-turbo\"})},\n    ],\n    data: \"openai-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[openai-api]],\n  [\"Params\"] = [[{\"api_key\":\"YOUR_API_KEY\",\"model\":\"gpt-3.5-turbo\"}]]\n})"
       },
       {
         "id": "cloudinary",
@@ -177,8 +177,8 @@
           "compulsory": ["cloud_name", "api_key", "api_secret"],
           "optional": ["resource_type", "transformation"]
         },
-        "jsExample": "const cloudinary = require('cloudinary').v2;\nawait cloudinary.uploader.upload('image.jpg', {\n  folder: 'samples'\n});",
-        "luaExample": "local cloudinary = require('cloudinary')\nlocal result = cloudinary.uploader:upload('image.jpg', {\n  folder = 'samples'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ cloud_name: \"YOUR_CLOUD_NAME\", api_key: \"YOUR_API_KEY\", api_secret: \"YOUR_API_SECRET\"})},\n    ],\n    data: \"cloudinary-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[cloudinary-api]],\n  [\"Params\"] = [[{\"cloud_name\":\"YOUR_CLOUD_NAME\",\"api_key\":\"YOUR_API_KEY\",\"api_secret\":\"YOUR_API_SECRET\"}]]\n})"
       },
       {
         "id": "mailchimp",
@@ -189,8 +189,8 @@
           "compulsory": ["api_key", "list_id"],
           "optional": ["subscriber_hash", "status"]
         },
-        "jsExample": "const mailchimp = require('@mailchimp/mailchimp_marketing');\nawait mailchimp.lists.addListMember(listId, {\n  email_address: 'test@example.com',\n  status: 'subscribed'\n});",
-        "luaExample": "local mailchimp = require('mailchimp')\nlocal member = mailchimp.lists:add_member(list_id, {\n  email_address = 'test@example.com',\n  status = 'subscribed'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ api_key: \"YOUR_API_KEY\", list_id: \"your-list-id\"})},\n    ],\n    data: \"mailchimp-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[mailchimp-api]],\n  [\"Params\"] = [[{\"api_key\":\"YOUR_API_KEY\",\"list_id\":\"your-list-id\"}]]\n})"
       },
       {
         "id": "hubspot",
@@ -201,8 +201,8 @@
           "compulsory": ["api_key"],
           "optional": ["properties", "associations"]
         },
-        "jsExample": "const hubspot = new Client({ apiKey: 'demo' });\nawait hubspot.contacts.create({\n  properties: {\n    email: 'test@example.com'\n  }\n});",
-        "luaExample": "local hubspot = require('hubspot')\nlocal contact = hubspot.contacts:create({\n  properties = {\n    email = 'test@example.com'\n  }\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ api_key: \"YOUR_API_KEY\"})},\n    ],\n    data: \"hubspot-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[hubspot-api]],\n  [\"Params\"] = [[{\"api_key\":\"YOUR_API_KEY\"}]]\n})"
       },
       {
         "id": "zoom",
@@ -213,8 +213,8 @@
           "compulsory": ["api_key", "api_secret"],
           "optional": ["meeting_type", "duration"]
         },
-        "jsExample": "const zoom = new ZoomAPI(credentials);\nawait zoom.meetings.create({\n  topic: 'Test Meeting',\n  duration: 60\n});",
-        "luaExample": "local zoom = require('zoom-api')\nlocal meeting = zoom.meetings:create({\n  topic = 'Test Meeting',\n  duration = 60\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ api_key: \"YOUR_API_KEY\", api_secret: \"YOUR_API_SECRET\"})},\n    ],\n    data: \"zoom-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[zoom-api]],\n  [\"Params\"] = [[{\"api_key\":\"YOUR_API_KEY\",\"api_secret\":\"YOUR_API_SECRET\"}]]\n})"
       },
       {
         "id": "dropbox",
@@ -225,8 +225,8 @@
           "compulsory": ["access_token"],
           "optional": ["path", "mode"]
         },
-        "jsExample": "const dropbox = new Dropbox({ accessToken: 'TOKEN' });\nawait dropbox.filesUpload({\n  path: '/test.txt',\n  contents: 'Hello, Dropbox!'\n});",
-        "luaExample": "local dropbox = require('dropbox')\nlocal result = dropbox:upload_file({\n  path = '/test.txt',\n  contents = 'Hello, Dropbox!'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ access_token: \"YOUR_ACCESS_TOKEN\"})},\n    ],\n    data: \"dropbox-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[dropbox-api]],\n  [\"Params\"] = [[{\"access_token\":\"YOUR_ACCESS_TOKEN\"}]]\n})"
       },
       {
         "id": "linkedin",
@@ -237,8 +237,8 @@
           "compulsory": ["client_id", "client_secret"],
           "optional": ["scope", "state"]
         },
-        "jsExample": "const linkedin = new LinkedIn(auth);\nawait linkedin.posts.create({\n  content: 'Hello, LinkedIn!',\n  visibility: 'PUBLIC'\n});",
-        "luaExample": "local linkedin = require('linkedin')\nlocal post = linkedin.posts:create({\n  content = 'Hello, LinkedIn!',\n  visibility = 'PUBLIC'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ client_id: \"YOUR_CLIENT_ID\", client_secret: \"YOUR_CLIENT_SECRET\"})},\n    ],\n    data: \"linkedin-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[linkedin-api]],\n  [\"Params\"] = [[{\"client_id\":\"YOUR_CLIENT_ID\",\"client_secret\":\"YOUR_CLIENT_SECRET\"}]]\n})"
       },
       {
         "id": "salesforce",
@@ -249,32 +249,32 @@
           "compulsory": ["username", "password", "security_token"],
           "optional": ["version", "instance_url"]
         },
-        "jsExample": "const conn = new jsforce.Connection();\nawait conn.login(username, password);\nawait conn.sobject('Account').create({ Name: 'Test Account' });",
-        "luaExample": "local salesforce = require('salesforce')\nlocal account = salesforce:create_account({\n  Name = 'Test Account'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ username: \"YOUR_USERNAME\", password: \"YOUR_PASSWORD\", security_token: \"YOUR_SECURITY_TOKEN\"})},\n    ],\n    data: \"salesforce-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[salesforce-api]],\n  [\"Params\"] = [[{\"username\":\"YOUR_USERNAME\",\"password\":\"YOUR_PASSWORD\",\"security_token\":\"YOUR_SECURITY_TOKEN\"}]]\n})"
       },
       {
         "id": "instagram",
-        "slug": "instagram-api",
+        "slug": "instagram-api", 
         "name": "Instagram API",
         "description": "Access Instagram features and post updates programmatically.",
         "params": {
           "compulsory": ["access_token", "user_id"],
           "optional": ["media_type", "caption"]
         },
-        "jsExample": "const instagram = new Instagram(token);\nawait instagram.media.create({\n  image_url: 'https://example.com/image.jpg',\n  caption: 'Hello, Instagram!'\n});",
-        "luaExample": "local instagram = require('instagram')\nlocal media = instagram:create_post({\n  image_url = 'https://example.com/image.jpg',\n  caption = 'Hello, Instagram!'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ access_token: \"YOUR_ACCESS_TOKEN\", user_id: \"YOUR_USER_ID\"})},\n    ],\n    data: \"instagram-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[instagram-api]],\n  [\"Params\"] = [[{\"access_token\":\"YOUR_ACCESS_TOKEN\",\"user_id\":\"YOUR_USER_ID\"}]]\n})"
       },
       {
         "id": "digitalocean",
         "slug": "digitalocean-api",
-        "name": "DigitalOcean API",
+        "name": "DigitalOcean API", 
         "description": "Manage cloud infrastructure and services programmatically.",
         "params": {
           "compulsory": ["api_token"],
           "optional": ["region", "size"]
         },
-        "jsExample": "const digitalocean = new DigitalOcean(token);\nawait digitalocean.droplets.create({\n  name: 'test-droplet',\n  region: 'nyc3',\n  size: 's-1vcpu-1gb'\n});",
-        "luaExample": "local do_api = require('digitalocean')\nlocal droplet = do_api:create_droplet({\n  name = 'test-droplet',\n  region = 'nyc3',\n  size = 's-1vcpu-1gb'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ api_token: \"YOUR_API_TOKEN\"})},\n    ],\n    data: \"digitalocean-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[digitalocean-api]],\n  [\"Params\"] = [[{\"api_token\":\"YOUR_API_TOKEN\"}]]\n})"
       },
       {
         "id": "mailgun",
@@ -285,8 +285,8 @@
           "compulsory": ["api_key", "domain"],
           "optional": ["template", "variables"]
         },
-        "jsExample": "const mailgun = new Mailgun({ apiKey: 'key', domain: 'example.com' });\nawait mailgun.messages.create('domain', {\n  from: 'sender@example.com',\n  to: 'recipient@example.com',\n  subject: 'Hello',\n  text: 'Testing Mailgun'\n});",
-        "luaExample": "local mailgun = require('mailgun')\nlocal message = mailgun:send_email({\n  from = 'sender@example.com',\n  to = 'recipient@example.com',\n  subject = 'Hello',\n  text = 'Testing Mailgun'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ api_key: \"YOUR_API_KEY\", domain: \"YOUR_DOMAIN\"})},\n    ],\n    data: \"mailgun-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[mailgun-api]],\n  [\"Params\"] = [[{\"api_key\":\"YOUR_API_KEY\",\"domain\":\"YOUR_DOMAIN\"}]]\n})"
       },
       {
         "id": "redis",
@@ -297,8 +297,8 @@
           "compulsory": ["host", "port"],
           "optional": ["password", "db"]
         },
-        "jsExample": "const redis = new Redis();\nawait redis.set('key', 'value');\nconst value = await redis.get('key');",
-        "luaExample": "local redis = require('redis')\nlocal client = redis.connect()\nclient:set('key', 'value')\nlocal value = client:get('key')"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ host: \"YOUR_HOST\", port: \"YOUR_PORT\"})},\n    ],\n    data: \"redis-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[redis-api]],\n  [\"Params\"] = [[{\"host\":\"YOUR_HOST\",\"port\":\"YOUR_PORT\"}]]\n})"
       },
       {
         "id": "elasticsearch",
@@ -309,8 +309,8 @@
           "compulsory": ["node", "index"],
           "optional": ["type", "body"]
         },
-        "jsExample": "const client = new Client({ node: 'http://localhost:9200' });\nawait client.index({\n  index: 'test',\n  body: { title: 'Test' }\n});",
-        "luaExample": "local elasticsearch = require('elasticsearch')\nlocal client = elasticsearch.Client()\nclient:index({\n  index = 'test',\n  body = { title = 'Test' }\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ node: \"YOUR_NODE\", index: \"YOUR_INDEX\"})},\n    ],\n    data: \"elasticsearch-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[elasticsearch-api]],\n  [\"Params\"] = [[{\"node\":\"YOUR_NODE\",\"index\":\"YOUR_INDEX\"}]]\n})"
       },
       {
         "id": "twitch",
@@ -321,8 +321,8 @@
           "compulsory": ["client_id", "client_secret"],
           "optional": ["scope", "redirect_uri"]
         },
-        "jsExample": "const twitch = new TwitchClient({ clientId: 'id' });\nconst stream = await twitch.streams.getStreamByUserId('123');",
-        "luaExample": "local twitch = require('twitch')\nlocal client = twitch.Client({ client_id = 'id' })\nlocal stream = client:get_stream('123')"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ client_id: \"YOUR_CLIENT_ID\", client_secret: \"YOUR_CLIENT_SECRET\"})},\n    ],\n    data: \"twitch-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[twitch-api]],\n  [\"Params\"] = [[{\"client_id\":\"YOUR_CLIENT_ID\",\"client_secret\":\"YOUR_CLIENT_SECRET\"}]]\n})"
       },
       {
         "id": "shopify",
@@ -333,8 +333,8 @@
           "compulsory": ["shop_name", "access_token"],
           "optional": ["version", "scope"]
         },
-        "jsExample": "const shopify = new Shopify({ shopName: 'store', accessToken: 'token' });\nawait shopify.product.create({\n  title: 'New Product',\n  price: '19.99'\n});",
-        "luaExample": "local shopify = require('shopify')\nlocal product = shopify:create_product({\n  title = 'New Product',\n  price = '19.99'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ shop_name: \"YOUR_SHOP_NAME\", access_token: \"YOUR_ACCESS_TOKEN\"})},\n    ],\n    data: \"shopify-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[shopify-api]],\n  [\"Params\"] = [[{\"shop_name\":\"YOUR_SHOP_NAME\",\"access_token\":\"YOUR_ACCESS_TOKEN\"}]]\n})"
       },
       {
         "id": "zendesk",
@@ -345,8 +345,8 @@
           "compulsory": ["email", "token", "subdomain"],
           "optional": ["locale", "priority"]
         },
-        "jsExample": "const client = new ZendeskAPI({ email: 'admin@example.com', token: 'token' });\nawait client.tickets.create({\n  subject: 'New Ticket',\n  comment: { body: 'Help needed' }\n});",
-        "luaExample": "local zendesk = require('zendesk')\nlocal ticket = zendesk:create_ticket({\n  subject = 'New Ticket',\n  comment = { body = 'Help needed' }\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ email: \"YOUR_EMAIL\", token: \"YOUR_TOKEN\", subdomain: \"YOUR_SUBDOMAIN\"})},\n    ],\n    data: \"zendesk-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[zendesk-api]],\n  [\"Params\"] = [[{\"email\":\"YOUR_EMAIL\",\"token\":\"YOUR_TOKEN\",\"subdomain\":\"YOUR_SUBDOMAIN\"}]]\n})"
       },
       {
         "id": "asana",
@@ -357,8 +357,8 @@
           "compulsory": ["access_token"],
           "optional": ["workspace", "project"]
         },
-        "jsExample": "const client = asana.Client.create().useAccessToken('token');\nawait client.tasks.create({\n  name: 'New Task',\n  notes: 'Task details'\n});",
-        "luaExample": "local asana = require('asana')\nlocal task = asana:create_task({\n  name = 'New Task',\n  notes = 'Task details'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ access_token: \"YOUR_ACCESS_TOKEN\"})},\n    ],\n    data: \"asana-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[asana-api]],\n  [\"Params\"] = [[{\"access_token\":\"YOUR_ACCESS_TOKEN\"}]]\n})"
       },
       {
         "id": "box",
@@ -369,8 +369,8 @@
           "compulsory": ["client_id", "client_secret"],
           "optional": ["folder_id", "file_name"]
         },
-        "jsExample": "const box = new Box({ clientId: 'id', clientSecret: 'secret' });\nawait box.files.upload({\n  name: 'test.txt',\n  parent: { id: '0' }\n});",
-        "luaExample": "local box = require('box')\nlocal file = box:upload_file({\n  name = 'test.txt',\n  parent_id = '0'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ client_id: \"YOUR_CLIENT_ID\", client_secret: \"YOUR_CLIENT_SECRET\"})},\n    ],\n    data: \"box-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[box-api]],\n  [\"Params\"] = [[{\"client_id\":\"YOUR_CLIENT_ID\",\"client_secret\":\"YOUR_CLIENT_SECRET\"}]]\n})"
       },
       {
         "id": "jira",
@@ -381,8 +381,8 @@
           "compulsory": ["host", "email", "api_token"],
           "optional": ["project", "issuetype"]
         },
-        "jsExample": "const jira = new JiraApi({ host: 'example.atlassian.net' });\nawait jira.issues.createIssue({\n  fields: {\n    project: { key: 'PROJ' },\n    summary: 'New Issue'\n  }\n});",
-        "luaExample": "local jira = require('jira')\nlocal issue = jira:create_issue({\n  project = 'PROJ',\n  summary = 'New Issue'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ host: \"YOUR_HOST\", email: \"YOUR_EMAIL\", api_token: \"YOUR_API_TOKEN\"})},\n    ],\n    data: \"jira-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[jira-api]],\n  [\"Params\"] = [[{\"host\":\"YOUR_HOST\",\"email\":\"YOUR_EMAIL\",\"api_token\":\"YOUR_API_TOKEN\"}]]\n})"
       },
       {
         "id": "trello",
@@ -393,8 +393,8 @@
           "compulsory": ["api_key", "token"],
           "optional": ["board_id", "list_id"]
         },
-        "jsExample": "const trello = new Trello(key, token);\nawait trello.addCard({\n  name: 'New Card',\n  desc: 'Card description',\n  idList: 'list123'\n});",
-        "luaExample": "local trello = require('trello')\nlocal card = trello:create_card({\n  name = 'New Card',\n  description = 'Card description',\n  list_id = 'list123'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ api_key: \"YOUR_API_KEY\", token: \"YOUR_TOKEN\"})},\n    ],\n    data: \"trello-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[trello-api]],\n  [\"Params\"] = [[{\"api_key\":\"YOUR_API_KEY\",\"token\":\"YOUR_TOKEN\"}]]\n})"
       },
       {
         "id": "intercom",
@@ -405,8 +405,8 @@
           "compulsory": ["access_token"],
           "optional": ["scope", "user_id"]
         },
-        "jsExample": "const intercom = new Intercom({ token: 'token' });\nawait intercom.contacts.create({\n  email: 'user@example.com',\n  name: 'John Doe'\n});",
-        "luaExample": "local intercom = require('intercom')\nlocal contact = intercom:create_contact({\n  email = 'user@example.com',\n  name = 'John Doe'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ access_token: \"YOUR_ACCESS_TOKEN\"})},\n    ],\n    data: \"intercom-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[intercom-api]],\n  [\"Params\"] = [[{\"access_token\":\"YOUR_ACCESS_TOKEN\"}]]\n})"
       },
       {
         "id": "freshdesk",
@@ -417,8 +417,8 @@
           "compulsory": ["domain", "api_key"],
           "optional": ["ticket_type", "status"]
         },
-        "jsExample": "const freshdesk = new Freshdesk(domain, key);\nawait freshdesk.createTicket({\n  subject: 'Support Needed',\n  description: 'Please help'\n});",
-        "luaExample": "local freshdesk = require('freshdesk')\nlocal ticket = freshdesk:create_ticket({\n  subject = 'Support Needed',\n  description = 'Please help'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ domain: \"YOUR_DOMAIN\", api_key: \"YOUR_API_KEY\"})},\n    ],\n    data: \"freshdesk-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[freshdesk-api]],\n  [\"Params\"] = [[{\"domain\":\"YOUR_DOMAIN\",\"api_key\":\"YOUR_API_KEY\"}]]\n})"
       },
       {
         "id": "airtable",
@@ -429,20 +429,20 @@
           "compulsory": ["api_key", "base_id"],
           "optional": ["table_name", "view"]
         },
-        "jsExample": "const airtable = new Airtable({ apiKey: 'key' });\nawait airtable.base('base123').table('Table').create({\n  'Field 1': 'Value 1',\n  'Field 2': 'Value 2'\n});",
-        "luaExample": "local airtable = require('airtable')\nlocal record = airtable:create_record({\n  base = 'base123',\n  table = 'Table',\n  fields = {\n    Field1 = 'Value 1',\n    Field2 = 'Value 2'\n  }\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ api_key: \"YOUR_API_KEY\", base_id: \"YOUR_BASE_ID\"})},\n    ],\n    data: \"airtable-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[airtable-api]],\n  [\"Params\"] = [[{\"api_key\":\"YOUR_API_KEY\",\"base_id\":\"YOUR_BASE_ID\"}]]\n})"
       },
       {
         "id": "segment",
         "slug": "segment-api",
-        "name": "Segment API",
+        "name": "Segment API", 
         "description": "Track customer data and events across platforms.",
         "params": {
           "compulsory": ["write_key"],
           "optional": ["user_id", "event"]
         },
-        "jsExample": "const analytics = new Analytics('write_key');\nawait analytics.track({\n  userId: '123',\n  event: 'Item Purchased',\n  properties: { item: 'Book' }\n});",
-        "luaExample": "local segment = require('segment')\nlocal event = segment:track({\n  user_id = '123',\n  event = 'Item Purchased',\n  properties = { item = 'Book' }\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ write_key: \"YOUR_WRITE_KEY\"})},\n    ],\n    data: \"segment-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[segment-api]],\n  [\"Params\"] = [[{\"write_key\":\"YOUR_WRITE_KEY\"}]]\n})"
       },
       {
         "id": "algolia",
@@ -453,9 +453,8 @@
           "compulsory": ["app_id", "api_key", "index"],
           "optional": ["query", "filters"]
         },
-        "jsExample": "const client = algoliasearch('app_id', 'api_key');\nconst index = client.initIndex('products');\nawait index.search('query');",
-        "luaExample": "local algolia = require('algolia')\nlocal results = algolia:search({\n  index = 'products',\n  query = 'search term'\n})"
+        "jsExample": "async function CallingAPI() {\n  const PROCESS_ID = \"aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU\";\n\n  const messageId = await message({\n    process: PROCESS_ID,\n    signer: createDataItemSigner(window.arweaveWallet),\n    tags: [\n      { name: \"Action\", value: \"Main\" },\n      { name: \"Params\", value: JSON.stringify({ app_id: \"YOUR_APP_ID\", api_key: \"YOUR_API_KEY\", index: \"YOUR_INDEX\"})},\n    ],\n    data: \"algolia-api\",\n  });\n\n  const res = await result({\n    message: messageId,\n    process: PROCESS_ID,\n  });\n}",
+        "luaExample": "Send({\n  Target = [[aUcCtx_TmBKe7v7YzptLGYjjn_T881DSifqngR8J6BU]],\n  Action = [[Main]],\n  Data = [[algolia-api]],\n  [\"Params\"] = [[{\"app_id\":\"YOUR_APP_ID\",\"api_key\":\"YOUR_API_KEY\",\"index\":\"YOUR_INDEX\"}]]\n})"
       }
     ]
   }
-  
