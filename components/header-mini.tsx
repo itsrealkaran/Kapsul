@@ -13,7 +13,7 @@ export function Header() {
                 </nav>
                 <Button 
                   variant="default" 
-                  className="bg-black text-white hover:bg-black/90 rounded-full px-4 transition-transform hover:scale-105 whitespace-nowrap"
+                  className="bg-black text-white hover:bg-black/90 rounded-xl px-4 transition-transform hover:scale-105 whitespace-nowrap"
                 >
                   Connect Wallet
                 </Button>

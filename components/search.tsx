@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { SearchIcon, Keyboard } from 'lucide-react'
 import { useRouter } from "next/navigation"
 import apiData from '@/public/apis.json'
-import { getRandomGradient } from '@/lib/utils'
+import { getRandomColor } from '@/lib/utils'
 
 interface ApiType {
   id: string
@@ -78,8 +78,8 @@ export function Search() {
                     onClick={() => handleSelectApi(api.slug)}
                     className="px-4 py-3 hover:bg-gray-50 cursor-pointer transition-colors duration-150 flex items-center"
                   >
-                    <div className={`w-8 h-8 rounded-md flex items-center justify-center mr-3 ${getRandomGradient(api.id)}`}>
-                        <span className="text-sm font-medium text-gray-700">{api.name.charAt(0)}</span>
+                    <div className="w-8 h-8 rounded-md flex items-center justify-center mr-3" style={getRandomColor(api.id)}>
+                      <span className="text-sm font-medium">{api.name.charAt(0)}</span>
                     </div>
                     <span className="font-medium text-gray-900">{api.name}</span>
                   </li>
@@ -101,8 +101,8 @@ export function Search() {
                         onClick={() => handleSelectApi(api.slug)}
                         className="px-4 py-3 hover:bg-gray-50 cursor-pointer transition-colors duration-150 flex items-center"
                       >
-                        <div className={`w-8 h-8 rounded-md flex items-center justify-center mr-3 ${getRandomGradient(api.id)}`}>
-                          <span className="text-sm font-medium text-gray-700">{api.name.charAt(0)}</span>
+                        <div className="w-8 h-8 rounded-md flex items-center justify-center mr-3" style={getRandomColor(api.id)}>
+                          <span className="text-sm font-medium">{api.name.charAt(0)}</span>
                         </div>
                         <span className="font-medium text-gray-900">{api.name}</span>
                       </li>
