@@ -2,7 +2,6 @@
 import { Layout } from "@/components/layout"
 import { Search } from "@/components/search"
 import { SpaceStocksBadge } from "@/components/ui/space-stocks-badge"
-import { useState } from "react"
 
 export default function Page() {
   return (
