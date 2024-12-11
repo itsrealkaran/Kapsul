@@ -36,7 +36,7 @@ Although we haven't implemented the subscription or pay-per-use revenue model ye
 ## Techstack
      
     - LUA 
-    - Nextjs
+    - Javascript
 
 ## Key Features
 
