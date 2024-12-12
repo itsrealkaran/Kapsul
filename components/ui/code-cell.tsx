@@ -12,7 +12,7 @@ interface CodeCellProps {
 
 export function CodeCell({ language, code }: CodeCellProps) {
   const [isCopied, setIsCopied] = useState(false)
-  const [isDark, setIsDark] = useState(true)
+  const [isDark, setIsDark] = useState(false)
 
   const handleCopy = () => {
     navigator.clipboard.writeText(code)

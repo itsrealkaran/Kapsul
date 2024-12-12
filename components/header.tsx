@@ -5,10 +5,10 @@ import { CtrlLogo } from "./logo"
 export function Header() {
   return (
     <header className="py-6">
-      <div className="container mx-auto flex items-center justify-between px-12">
+      <div className="container mx-auto flex items-center justify-between px-14">
         <Link 
           href="/" 
-          className="transition-opacity hover:opacity-80" 
+          className="transition-opacity" 
           aria-label="Home"
         >
           <CtrlLogo />
@@ -50,7 +50,7 @@ export function Header() {
         
         <Button 
           variant="default" 
-          className="bg-black text-white hover:bg-black/90 rounded-xl px-4 transition-transform hover:scale-105"
+          className="bg-black text-white hover:bg-black/90 rounded-xl px-4 transition-transform hover:scale-105 whitespace-nowrap"
         >
           Connect Wallet
         </Button>
